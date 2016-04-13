@@ -20,6 +20,9 @@ public class Simulator implements Constants
 	/** The average length between process arrivals */
 	private long avgArrivalInterval;
 	// Add member variables as needed
+	private CPU cpu;
+	private IO io;
+	private long avgIoTime;
 
 	/**
 	 * Constructs a scheduling simulator with the given parameters.
@@ -42,6 +45,10 @@ public class Simulator implements Constants
 		eventQueue = new EventQueue();
 		memory = new Memory(memoryQueue, memorySize, statistics);
 		clock = 0;
+
+		this.cpu = new CPU(cpuQueue, statistics, maxCpuTime, gui, eventQueue);
+		this.io = new IO(ioQueue, statistics, gui, eventQueue);
+		this.avgIoTime = avgIoTime;
 		// Add code as needed
     }
 
@@ -67,6 +74,8 @@ public class Simulator implements Constants
 			// Let the memory unit and the GUI know that time has passed
 			memory.timePassed(timeDifference);
 			gui.timePassed(timeDifference);
+			cpu.timePassed(timeDifference);
+			io.timePassed(timeDifference);
 			// Deal with the event
 			if (clock < simulationLength) {
 				processEvent(event);
@@ -130,7 +139,9 @@ public class Simulator implements Constants
 		// As long as there is enough memory, processes are moved from the memory queue to the cpu queue
 		while(p != null) {
 			
-			// TODO: Add this process to the CPU queue!
+			// TODO: Add this process to the CPU queue!AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+			this.cpu.addToQueue(p, this.clock);
+
 			// Also add new events to the event queue if needed
 
 			// Since we haven't implemented the CPU and I/O device yet,
@@ -151,6 +162,8 @@ public class Simulator implements Constants
 	 */
 	private void switchProcess() {
 		// Incomplete
+		this.cpu.switchProcess(this.clock);
+		this.cpu.processNextProcess(this.clock);
 	}
 
 	/**
@@ -158,6 +171,9 @@ public class Simulator implements Constants
 	 */
 	private void endProcess() {
 		// Incomplete
+		Process oldProcess = this.cpu.endProcess();
+		this.memory.processCompleted(oldProcess);
+
 	}
 
 	/**
@@ -166,6 +182,9 @@ public class Simulator implements Constants
 	 */
 	private void processIoRequest() {
 		// Incomplete
+		Process ioProcess = this.cpu.getProcessForIO();
+		this.io.addToQueue(ioProcess, this.clock);
+
 	}
 
 	/**
@@ -174,6 +193,11 @@ public class Simulator implements Constants
 	 */
 	private void endIoOperation() {
 		// Incomplete
+		Process finishedIoOp = this.io.endIoOp();
+		this.io.performIO(this.clock);
+		this.cpu.addToQueue(finishedIoOp, this.clock);
+
+
 	}
 
 	/**
