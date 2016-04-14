@@ -46,13 +46,20 @@ public class Process implements Constants
 	/** The global time of the last event involving this process */
 	private long timeOfLastEvent;
 
+	private Statistics statistics;
+    private long avgIoTime;
+    private long numInMemoryQueue;
+    private long timeOfLastCpuQueueArrival;
+    private long timeOfLastIoQueueArrival;
+    private long totalTimeInSystem;
+
 	/**
 	 * Creates a new process with given parameters. Other parameters are randomly
 	 * determined.
 	 * @param memorySize	The size of the memory unit.
 	 * @param creationTime	The global time when this process is created.
 	 */
-	public Process(long memorySize, long creationTime) {
+	public Process(long memorySize, long creationTime, long avgIoTime, Statistics statistics) {
 		// Memory need varies from 100 kB to 25% of memory size
 		memoryNeeded = 100 + (long)(Math.random()*(memorySize/4-100));
 		// CPU time needed varies from 100 to 10000 milliseconds
@@ -68,6 +75,11 @@ public class Process implements Constants
 		int green = 64+(int)((processId*47)%128);
 		int blue = 64+(int)((processId*53)%128);
 		color = new Color(red, green, blue);
+
+
+        this.avgIoTime = avgIoTime;
+        this.numInMemoryQueue = 0;
+        this.statistics = statistics;
 	}
 
 	/**
@@ -96,6 +108,7 @@ public class Process implements Constants
     public void leftMemoryQueue(long clock) {
 		  timeSpentWaitingForMemory += clock - timeOfLastEvent;
 		  timeOfLastEvent = clock;
+        this.statistics.totalTimeSpentWaitingForMemory += timeSpentWaitingForMemory;
     }
 
     /**
@@ -118,4 +131,69 @@ public class Process implements Constants
 	}
 
 	// Add more methods as needed
+
+
+    public long getCpuTimeNeeded(){
+        return this.cpuTimeNeeded;
+    }
+
+    public void updateCpuTimeNeeded(long cpuTimeUsed){
+        this.cpuTimeNeeded -= cpuTimeUsed;
+        this.timeSpentInCpu += cpuTimeUsed;
+        this.statistics.totalTimeProcessing += this.timeSpentInCpu;
+        this.updateNextIOTime();
+    }
+
+
+    public long calcIOTime(){
+        long ioTime = (long) (((Math.random()) + 0.5)*avgIoTime);
+        this.timeSpentInIo += ioTime;
+        this.statistics.totalTimeSpentInIo += this.timeSpentInIo;
+        avgIoInterval = ((1+(long)(Math.random()*25))*((long)(cpuTimeNeeded + timeSpentInCpu))/100) + timeSpentInCpu;
+        updateNextIOTime();
+        return ioTime;
+    }
+
+    public long getTimeToNextIO(){
+        return timeToNextIoOperation;
+    }
+
+    public void updateNextIOTime(){
+        timeToNextIoOperation = avgIoInterval - timeSpentInCpu;
+    }
+
+    public void incrementInMemoryQueue(){
+        this.numInMemoryQueue++;
+
+    }
+
+    public void arrivedAtCpuQueue(long clock){
+        this.timeOfLastCpuQueueArrival = clock;
+    }
+
+    public void leftCpuQueue(long clock){
+        this.timeSpentInReadyQueue += clock - timeOfLastCpuQueueArrival;
+        this.statistics.totalTimeWaitingForCpu += this.timeSpentInReadyQueue;
+
+    }
+
+    public void arrivedAtIoQueue(long clock){
+        this.timeOfLastIoQueueArrival = clock;
+    }
+
+    public void leftIoQueue(long clock){
+        this.timeSpentWaitingForIo += clock - timeOfLastIoQueueArrival;
+        this.statistics.totalTimeWaitingForIo += this.timeSpentWaitingForIo;
+
+    }
+
+
+    public long calcTotalTimeInSystem(){
+        this.totalTimeInSystem = timeSpentWaitingForMemory + timeSpentInReadyQueue + timeSpentInCpu + timeSpentWaitingForIo + timeSpentInIo;
+
+        return this.totalTimeInSystem;
+    }
+
+
+
 }

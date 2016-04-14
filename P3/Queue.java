@@ -55,6 +55,10 @@ public class Queue extends JPanel implements Constants {
 	 * @return	The object that was the first one in the queue.
 	 */
 	public Object removeNext() {
+		if(isEmpty()) {
+			return null;
+		}
+
 		Object result = content.remove(0);
 		repaint();
 		return result;

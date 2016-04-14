@@ -120,7 +120,7 @@ public class Simulator implements Constants
 	 */
 	private void createProcess() {
 		// Create a new process
-		Process newProcess = new Process(memory.getMemorySize(), clock);
+		Process newProcess = new Process(memory.getMemorySize(), clock, avgIoTime, this.statistics);
 		memory.insertProcess(newProcess);
 		flushMemoryQueue();
 		// Add an event for the next process arrival

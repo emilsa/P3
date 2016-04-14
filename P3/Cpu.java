@@ -56,7 +56,7 @@ public class CPU{
                 activeProcess.updateCpuTimeNeeded(maxCpuTime);
 
                 this.eq.insertEvent(new Event(Constants.SWITCH_PROCESS, clock + maxCpuTime));
-                this.statistics.nofProcescSwitches++;
+                this.statistics.nofProcessSwitches++;
                 this.statistics.timeSpentCPU += this.maxCpuTime;
             }
 
