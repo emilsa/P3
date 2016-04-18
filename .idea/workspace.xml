@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3eb1adc-d3b4-44f0-a18f-3023e6460cb6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/CPU.java" />
-      <change type="DELETED" beforePath="C:\Users\eirik\Desktop\NTNU\TDT4186\P3\P3\Cpu.java" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\eirik\Desktop\NTNU\TDT4186\P3\P3\Constants.java" afterPath="$PROJECT_DIR$/src/Constants.java" />
-      <change type="MOVED" beforePath="C:\Users\eirik\Desktop\NTNU\TDT4186\P3\P3\Event.java" afterPath="$PROJECT_DIR$/src/Event.java" />
-      <change type="MOVED" beforePath="C:\Users\eirik\Desktop\NTNU\TDT4186\P3\P3\EventQueue.java" afterPath="$PROJECT_DIR$/src/EventQueue.java" />
-      <change type="MOVED" beforePath="C:\Users\eirik\Desktop\NTNU\TDT4186\P3\P3\Gui.java" afterPath="$PROJECT_DIR$/src/Gui.java" />
-      <change type="MOVED" beforePath="C:\Users\eirik\Desktop\NTNU\TDT4186\P3\P3\IO.java" afterPath="$PROJECT_DIR$/src/IO.java" />
-      <change type="MOVED" beforePath="C:\Users\eirik\Desktop\NTNU\TDT4186\P3\P3\Memory.java" afterPath="$PROJECT_DIR$/src/Memory.java" />
-      <change type="MOVED" beforePath="C:\Users\eirik\Desktop\NTNU\TDT4186\P3\P3\PicturePanel.java" afterPath="$PROJECT_DIR$/src/PicturePanel.java" />
-      <change type="MOVED" beforePath="C:\Users\eirik\Desktop\NTNU\TDT4186\P3\P3\Process.java" afterPath="$PROJECT_DIR$/src/Process.java" />
-      <change type="MOVED" beforePath="C:\Users\eirik\Desktop\NTNU\TDT4186\P3\P3\Queue.java" afterPath="$PROJECT_DIR$/src/Queue.java" />
-      <change type="MOVED" beforePath="C:\Users\eirik\Desktop\NTNU\TDT4186\P3\P3\Resource.java" afterPath="$PROJECT_DIR$/src/Resource.java" />
-      <change type="MOVED" beforePath="C:\Users\eirik\Desktop\NTNU\TDT4186\P3\P3\SimulationGui.java" afterPath="$PROJECT_DIR$/src/SimulationGui.java" />
-      <change type="MOVED" beforePath="C:\Users\eirik\Desktop\NTNU\TDT4186\P3\P3\Simulator.java" afterPath="$PROJECT_DIR$/src/Simulator.java" />
-      <change type="MOVED" beforePath="C:\Users\eirik\Desktop\NTNU\TDT4186\P3\P3\Statistics.java" afterPath="$PROJECT_DIR$/src/Statistics.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/P3.iml" afterPath="$PROJECT_DIR$/.idea/P3.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Constants.java" afterPath="$PROJECT_DIR$/src/Constants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gui.java" afterPath="$PROJECT_DIR$/src/Gui.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Process.java" afterPath="$PROJECT_DIR$/src/Process.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="P3.iws" />
@@ -142,6 +129,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="P3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="P3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -150,7 +151,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../gruppe23" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -460,16 +461,16 @@
       <workItem from="1459951839902" duration="19000" />
       <workItem from="1460553532112" duration="4894000" />
       <workItem from="1460639368022" duration="3188000" />
-      <workItem from="1460977029390" duration="1083000" />
+      <workItem from="1460977029390" duration="4482000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12014000" />
+    <option name="totallyTimeSpent" value="15413000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -872,6 +873,14 @@
           <folding>
             <element signature="e#0#3920#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/java/net/URLClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="371" column="0" selection-start-line="371" selection-start-column="0" selection-end-line="371" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -149,7 +149,7 @@ public class Process implements Constants
         long ioTime = (long) (((Math.random()) + 0.5)*avgIoTime);
         this.timeSpentInIo += ioTime;
         this.statistics.totalTimeSpentInIo += this.timeSpentInIo;
-        avgIoInterval = ((1+(long)(Math.random()*25))*((long)(cpuTimeNeeded + timeSpentInCpu))/100) + timeSpentInCpu;
+        avgIoInterval = ((1+(long)(Math.random()*25))* (cpuTimeNeeded + timeSpentInCpu) /100) + timeSpentInCpu;
         updateNextIOTime();
         return ioTime;
     }
